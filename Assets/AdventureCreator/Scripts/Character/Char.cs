@@ -1503,7 +1503,7 @@ namespace AC
 					}
 					else
 					{
-						Vector3 force = CalcForce (newVel, 0f, _rigidbody2D.mass, _rigidbody2D.velocity);
+						Vector3 force = CalcForce (newVel, 0f, _rigidbody2D.mass, _rigidbody2D.linearVelocity);
 						_rigidbody2D.AddForce (force);
 					}
 				}
