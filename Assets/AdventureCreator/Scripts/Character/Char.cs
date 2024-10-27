@@ -569,13 +569,13 @@ namespace AC
 					{
 						ACDebug.LogWarning ("In order to move a sprite-based character (" + gameObject.name + ") in 3D, there must not be a Rigidbody2D component on the base.", gameObject);
 					}
-					else if (antiGlideMode)
-					{
-						_rigidbody2D.isKinematic = true;
-						_rigidbody2D = null;
-						ACDebug.LogWarning ("The use of character " + gameObject.name + "'s Rigidbody2D component is disabled as it conflicts with the 'Only move when sprite changes feature.", gameObject);
-					}
-				}
+                    else if (antiGlideMode)
+                    {
+                        _rigidbody2D.bodyType = RigidbodyType2D.Kinematic; // Set to Kinematic
+                        _rigidbody2D = null; // Optional: If you still want to nullify the reference
+                        ACDebug.LogWarning("The use of character " + gameObject.name + "'s Rigidbody2D component is disabled as it conflicts with the 'Only move when sprite changes' feature.", gameObject);
+                    }
+                }
 			}
 			PhysicsUpdate ();
 
@@ -1497,19 +1497,19 @@ namespace AC
 			{
 				if (GetRootMotionType () == RootMotionType.None)
 				{
-					if (_rigidbody2D.isKinematic)
-					{
-						_rigidbody2D.MovePosition (Transform.position + newVel * Time.deltaTime);
-					}
-					else
-					{
-						Vector3 force = CalcForce (newVel, 0f, _rigidbody2D.mass, _rigidbody2D.linearVelocity);
-						_rigidbody2D.AddForce (force);
-					}
-				}
+                    if (_rigidbody2D.bodyType == RigidbodyType2D.Kinematic) // Check if the body type is Kinematic
+                    {
+                        _rigidbody2D.MovePosition(transform.position + newVel * Time.deltaTime); // Move the Rigidbody2D
+                    }
+                    else
+                    {
+                        Vector3 force = CalcForce(newVel, 0f, _rigidbody2D.mass, _rigidbody2D.linearVelocity); // Calculate the force based on new velocity and mass
+                        _rigidbody2D.AddForce(force); // Apply the calculated force
+                    }
+                }
 
 
-				bool xFrozen = false;
+                bool xFrozen = false;
 				bool yFrozen = false;
 
 				if (freezeRigidbodyWhenIdle)
