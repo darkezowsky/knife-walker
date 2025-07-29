@@ -11,6 +11,19 @@ The purpose of this archive is to preserve and maintain this game in a playable 
 Click to start the GIF
 ![Preview](Assets/Graphics/first_scene.gif)
 
+Screenshots
+![Preview](Assets/GitHub/screenshot_001.png)
+
+![Preview](Assets/GitHub/screenshot_002.png)
+
+![Preview](Assets/GitHub/screenshot_003.png)
+
+![Preview](Assets/GitHub/screenshot_004.png)
+
+![Preview](Assets/GitHub/screenshot_005.png)
+
+![Preview](Assets/GitHub/screenshot_006.png)
+
 Main goals of this repository:
 * Preserving the project as a milestone of my early development journey.
 * Keeping the game functional on newer versions of Unity.
